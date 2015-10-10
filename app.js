@@ -20,7 +20,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var expressValidator = require('express-validator');
 var sass = require('node-sass-middleware');
-
+var product = require('./product');
 
 /**
  * Controllers (route handlers).
@@ -29,12 +29,14 @@ var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
+var productController = require('./controllers/products');
 
 /**
  * API keys and Passport configuration.
  */
 var secrets = require('./config/secrets');
 var passportConf = require('./config/passport');
+
 
 /**
  * Create Express server.
@@ -194,6 +196,10 @@ app.get('/auth/venmo', passport.authorize('venmo', { scope: 'make_payments acces
 app.get('/auth/venmo/callback', passport.authorize('venmo', { failureRedirect: '/api' }), function(req, res) {
   res.redirect('/api/venmo');
 });
+
+app.get('/products', productController.listProducts);
+app.get('/addProduct', productController.getAddProduct);
+app.post('/addProduct', productController.postAddProduct);
 
 
 /**

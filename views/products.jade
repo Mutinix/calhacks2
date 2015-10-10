@@ -1,0 +1,13 @@
+extends layout
+
+block content
+	h1 Products
+	hr 
+	.row 
+		.col-sm-6
+		h2= title
+		p= "Last viewed :" + lastProduct
+		ul
+			each product, index in products
+				- product = product.getInformation()
+				li= product.name + '-' + product.lender + '-' + index
