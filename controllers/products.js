@@ -1,14 +1,16 @@
 
 var ProductSchema = require('../models/Product');
 var product = require('../product');
-var products = require('../data');
+//var products = require('../data');
 id_count = 0; //FIX TO MAKE UNIQUE
 exports.listProducts = function(req,res){
 
-	for(var number in products){
-		products[number] = product(products[number]);
+	ProductSchema.find(function(err, products){
+		if(err) return console.error(err);
 		res.render('products', {title: 'All Products', products: products});
-		}
+
+	});
+
 };
 /** GET / ADD PRODUCT**/
 exports.getAddProduct = function(req,res){

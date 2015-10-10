@@ -4,10 +4,12 @@ block content
 	h1 Products
 	hr 
 	.row 
-		.col-sm-6
 		h2= title
 		p= "Last viewed :" + lastProduct
-		ul
+		
+		ul.list-unstyled
 			each product, index in products
-				- product = product.getInformation()
-				li= product.name + '-' + product.lender + '-' + index
+				li 
+					.col-sm-3
+						h4= product.name 
+						p= product.lender
