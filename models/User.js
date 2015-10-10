@@ -22,6 +22,9 @@ var userSchema = new mongoose.Schema({
     picture: { type: String, default: '' }
   },
 
+  rating: Number,
+  username: { type: String, unique: true},
+
   resetPasswordToken: String,
   resetPasswordExpires: Date
 });

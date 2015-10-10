@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 User Information
+
+  h3 #{user.profile.name}
+
+  .row
+    .col-sm-3
+      img(class="img-circle" src="#{user.gravatar()}", class='profile', width='100', height='100')
+      .panel.panel-default
+        .panel-heading Details
+        .panel-body
+          .ul
+            .li Location: #{user.profile.location}
+            .li Seller Rating: 5 stars
+            .li Buyer Rating: 5 stars
+
+    .col-sm-9
+      h4 Products
+      .row.placeholders
+        .col-sm-3.placeholder
+          h5 Product 1
+        .col-sm-3.placeholder
+          h5 Product 2
+        .col-sm-3.placeholder
+          h5 Product 3
