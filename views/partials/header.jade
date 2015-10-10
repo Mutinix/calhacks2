@@ -8,7 +8,7 @@
         span.icon-bar
       a.navbar-brand(href='/')
         i.fa.fa-cube
-        | Project name
+        | XCHG
     .collapse.navbar-collapse
       ul.nav.navbar-nav
         li(class=title=='Home'?'active':undefined)
@@ -34,7 +34,10 @@
               i.caret
             ul.dropdown-menu
               li
-                a(href='/account') My Account
+                a(href='/user/#{user.username}') View Profile
+              li.divider
+              li
+                a(href='/account') Account Settings
               li.divider
               li
                 a(href='/logout') Logout
