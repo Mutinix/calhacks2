@@ -120,6 +120,7 @@ exports.postUpdateProfile = function(req, res, next) {
   User.findById(req.user.id, function(err, user) {
     if (err) return next(err);
     user.email = req.body.email || '';
+    user.username = req.body.username || '';
     user.profile.name = req.body.name || '';
     user.profile.gender = req.body.gender || '';
     user.profile.location = req.body.location || '';
@@ -355,4 +356,23 @@ exports.postForgot = function(req, res, next) {
     if (err) return next(err);
     res.redirect('/forgot');
   });
+};
+
+/**
+ * GET /user
+ * Profile page.
+ */
+exports.getUser = function(req, res) {
+  console.log("HERE");
+  User
+    .findOne({ username: req.params.username })
+    .exec(function(err, user) {
+      if (!user) {
+        req.flash('errors', { msg: 'User with that username does not exist.' });
+        return res.redirect('/');
+      }
+      res.render('account/user', {
+        title: user.username + '\'s Profile'
+      });
+    });
 };
