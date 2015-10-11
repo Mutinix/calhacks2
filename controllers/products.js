@@ -1,7 +1,7 @@
 
 var ProductSchema = require('../models/Product');
 var product = require('../product');
-//var products = require('../data');
+
 id_count = 0; //FIX TO MAKE UNIQUE
 exports.listProducts = function(req,res){
 
@@ -11,6 +11,18 @@ exports.listProducts = function(req,res){
 
 	});
 
+};
+/*** INDIVIDUAL PRODUCTS ***/
+exports.individualProduct = function(req, res){
+	var number = req.param('number');
+	ProductSchema.find(function(err, products){
+		if(err) return console.error(err);
+		req.session.lastNumber = number;
+		if(typeof products[number]==='undefined'){
+		res.status(404).json({status:'error'});
+		}
+		else{res.render('individualProduct', {product: products[number]});}
+	}); // FIX?
 };
 /** GET / ADD PRODUCT**/
 exports.getAddProduct = function(req,res){
@@ -28,9 +40,11 @@ exports.postAddProduct = function(req,res){
 	var productData = {
     name: req.body.name,
     borrower: null,
-    lender: req.body.username,
+    lender: req.user._id,
     description: req.body.description,
-    productid_id: ++id_count
+    productid_id: ++id_count,
+    imgUrl: req.body.imgUrl,
+    price: req.body.price
 	};
 	var product1 = new ProductSchema(productData);
 	console.log(product1);

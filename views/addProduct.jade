@@ -5,10 +5,6 @@ block content
     h3 Add New Product
   form.form-horizontal(id='addProduct-form', method='POST')
      input(type='hidden', name='_csrf', value=_csrf)
-     .form-group
-      label.col-sm-3.control-label(for='username') User Name
-      .col-sm-7
-        input.form-control(type='text', name='username', id='username', value='#{user.profile.name}')
      
      .form-group
       label.col-sm-3.control-label(for='name') Product Name
@@ -20,6 +16,16 @@ block content
       .col-sm-7
         input.form-control(type='text', name='description', id='description')
   
+      .form-group
+      label.col-sm-3.control-label(for='price') Price
+      .col-sm-7
+        input.form-control(type='number', name='price', id='price')
+      
+      .form-group
+      label.col-sm-3.control-label(for='imgUrl') Image URL
+      .col-sm-7
+        input.form-control(type='text', name='imgUrl', id='imgUrl')
+        br
         button.btn.btn-success(type='submit')
           i.fa.fa-user-plus
           | AddProduct

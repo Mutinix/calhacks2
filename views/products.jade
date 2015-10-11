@@ -5,11 +5,10 @@ block content
 	hr 
 	.row 
 		h2= title
-		p= "Last viewed :" + lastProduct
 		
 		ul.list-unstyled
 			each product, index in products
 				li 
 					.col-sm-3
 						h4= product.name 
-						p= product.lender
+						p= product.price

@@ -1,0 +1,13 @@
+extends layout
+
+block content
+	h1= product.name
+	hr 
+	.row 
+		img(src=product.imgUrl).thumbnail.col-sm-3
+		.col-sm-8 
+			h1= "$"+product.price
+			p= product.description
+
+		
+		
