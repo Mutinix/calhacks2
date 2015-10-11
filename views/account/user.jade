@@ -24,7 +24,8 @@ block content
       .row.placeholders
         each product, index in products
           .col-sm-3
-            a(href="/products/" + product.productid_id-1)
+          - var i = product.productid_id-1
+            a(href="/products/" + i)
               h4= product.name
-              a(href="/products/" + product.productid_id-1).thumbnail
+              a(href="/products/" + i).thumbnail
                 img(src=product.imgUrl)
