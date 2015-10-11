@@ -57,7 +57,7 @@ exports.postAddProduct = function(req,res){
 /** POST / BORROW PRODUCT**/
 exports.borrowProduct = function(req, res) {
     var user = req.user;
-    console.log("REQ")
+    console.log("REQ");
     console.log(req);
     var errors = req.validationErrors();
     if (errors) {

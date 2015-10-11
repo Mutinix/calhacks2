@@ -8,6 +8,12 @@ block content
 		.col-sm-8 
 			h1= "$"+product.price
 			p= product.description
-
+			form.form-horizontal(action='/borrowProduct', method='POST')
+							input(type='hidden', name='pid', value=product.productid_id)
+							input(type='hidden', name='_csrf', value=_csrf)
+							.form-group
+								button.btn.btn.btn-primary(type='submit')
+									i.fa.fa-pencilr
+									| Borrow Product
 		
 		
