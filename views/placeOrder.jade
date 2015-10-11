@@ -1,0 +1,59 @@
+extends layout
+
+block content
+  .page-header
+    h3 Place Order
+  
+  form.form-horizontal(id='addProduct-form', method='POST')
+     input(type='hidden', name='_csrf', value=_csrf)
+     
+     .form-group
+      label.col-sm-3.control-label(for='manifest') Manifest
+      .col-sm-7
+        input.form-control(type='text', name='manifest', id='manifest')
+
+      .form-group
+      label.col-sm-3.control-label(for='pickup_address') Pick Up Address
+      .col-sm-7
+        input.form-control(type='text', name='pickup_address', id='pickup_address')
+      
+      .form-group
+      label.col-sm-3.control-label(for='pickup_phone_number') Phone Number
+      .col-sm-7
+        input.form-control(type='pickup_phone_number', name='pickup_phone_number', id='pickup_phone_number')
+      
+      .form-group
+      label.col-sm-3.control-label(for=' pickup_notes') Pickup Notes
+      .col-sm-7
+        input.form-control(type=' pickup_notes', name=' pickup_notes', id=' pickup_notes')
+
+      .form-group
+      label.col-sm-3.control-label(for='dropoff_name') Dropoff Name
+      .col-sm-7
+        input.form-control(type='dropoff_name', name='dropoff_name', id='dropoff_name')
+        
+      .form-group
+      label.col-sm-3.control-label(for='dropoff_address') Dropoff Address
+      .col-sm-7
+        input.form-control(type='dropoff_address', name='dropoff_address', id='dropoff_address')
+
+      .form-group
+      label.col-sm-3.control-label(for='dropoff_phone_number') Dropoff Phone Number
+      .col-sm-7
+        input.form-control(type='dropoff_phone_number', name='dropoff_phone_number', id='dropoff_phone_number')
+
+      .form-group
+      label.col-sm-3.control-label(for='dropoff_business_name') Dropoff Business Name
+      .col-sm-7
+        input.form-control(type='dropoff_business_name', name='dropoff_business_name', id='dropoff_business_name')
+
+      .form-group
+      label.col-sm-3.control-label(for='dropoff_notes') Dropoff Notes
+      .col-sm-7
+        input.form-control(type='dropoff_notes', name='dropoff_notes', id='dropoff_notes')
+
+        br
+        button.btn.btn-success(type='submit')
+          i.fa.fa-user-plus
+          | AddProduct
+
