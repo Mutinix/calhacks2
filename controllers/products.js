@@ -4,7 +4,7 @@ var User = require('../models/User');
 var product = require('../product');
 var Postmates = require('postmates');
 var postmates = new Postmates('cus_KWaTpUK-km_Dq-', '21d5ae72-c418-40a2-987c-b3d2c822cedb');
-
+var price_quote;
 id_count = 0; //FIX TO MAKE UNIQUE
 exports.listProducts = function(req,res){
 
@@ -74,40 +74,21 @@ exports.getBorrowProduct = function(req, res) {
                 dropoff_address: "2227 Piedmont Ave Berkeley, CA 94720"
             };
             //console.log(delivery);
-            postmates.quote(delivery, function(err, res) {
-                console.log(res.body.fee);
+            postmates.quote(delivery, function(err, resp) {
+				price_quote = resp.body.fee;
+                res.render('placeOrder', {delivery: delivery});
+
             });
-            res.render('placeOrder', {QuoteID: res.body.id});
         });
         }
     });
 };
 
 
-/** POST / BORROW PRODUCT**/
-/*exports.postBorrowProduct = function(req, res) {
-    var user = req.user;
-    var errors = req.validationErrors();
-    if (errors) {
-        req.flash('errors', errors);
-        return res.redirect('/borrowproduct');
-        }
-    
-    ProductSchema.findOne({ _id: req.body.pid }, function(err, prod){
-        prod.isBorrowed = true;
-        console.log(prod.isBorrowed);
-        prod.borrower = user._id.toString();
-        prod.save(function(err) {
-            if (err) return next(err);
-            req.flash('success', { msg: 'Product Borrowed!'});
-            res.redirect('/products');
-        });
-    });
 
-};*/
-
-exports.postConfirmOrder= function(req,res){
+exports.postBorrowProduct= function(req,res){
 	var user = req.user;
+	var number = req.param('number');
     var errors = req.validationErrors();
     if (errors) {
         req.flash('errors', errors);
@@ -129,18 +110,18 @@ exports.postConfirmOrder= function(req,res){
 		quote_id: req.body.quote_id
 		};
 	postmates.new(delivery, function(err, res) {
-			console.log(res.body);
-		console.log("inside post");
+		console.log("hello");
 	});
-	console.log("hello");
+	
 	console.log(req.body.quote_id);
 
 	postmates.get(req.body.quote_id, function(err, res){
 		console.log(res.body);
 	});
-
+	res.redirect('/products/'+number+'/placeOrder/fare');
 };
-exports.getConfirmOrder = function(){
-
+exports.getFare = function(req,res){
+	if(!req.user){res.redirect('/');}
+	res.render('fare', {charge: price_quote });
 };
 
