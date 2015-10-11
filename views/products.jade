@@ -5,14 +5,13 @@ block content
 	hr 
 	.row 
 		h2= title
-		p= "Last viewed :" + lastProduct
 		
 		ul.list-unstyled
 			each product, index in products
 				li 
 					.col-sm-3
 						h4= product.name 
-						p= product.lender
+						p= product.price
 						form.form-horizontal(action='/borrowProduct', method='POST')
 							input(type='hidden', name='pid', value=product.productid_id)
 							input(type='hidden', name='_csrf', value=_csrf)

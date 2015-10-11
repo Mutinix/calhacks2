@@ -4,7 +4,9 @@ var Product = function(){
 		borrower: null,
 		lender: null,
 		description: null,
-		productid_id: null
+		productid_id: null,
+		price: null,
+		imgUrl: null
 	};
 	this.fill = function(info){
 		for(var prop in this.data){
