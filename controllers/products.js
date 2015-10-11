@@ -83,12 +83,6 @@ exports.getBorrowProduct = function(req, res) {
 };
 
 
-
-<<<<<<< HEAD
-};*/
-
-=======
->>>>>>> 9da2ec71e5123165ad004bf964e59455f8d09829
 exports.postBorrowProduct= function(req,res){
 	var user = req.user;
 	var number = req.param('number');
