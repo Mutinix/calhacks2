@@ -16,5 +16,6 @@ block content
 				li 
 					.col-sm-3
 						a(href="/products/" + index)
-							h4= product.name 
-						p= product.price
+							h4= product.name
+						a(href="/products/" + index).thumbnail
+							img(src=product.imgUrl)

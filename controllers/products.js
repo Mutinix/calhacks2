@@ -4,7 +4,7 @@ var User = require('../models/User');
 var product = require('../product');
 var Postmates = require('postmates');
 var postmates = new Postmates('cus_KWaTpUK-km_Dq-', '21d5ae72-c418-40a2-987c-b3d2c822cedb');
-var price_quote;
+var price_quote ;
 id_count = 0; //FIX TO MAKE UNIQUE
 exports.listProducts = function(req,res){
 
