@@ -71,12 +71,13 @@ exports.getBorrowProduct = function(req, res) {
             console.log("Delivery Address: " + req.user.profile.location);
             var delivery = {
                 pickup_address: "2400 Bancroft Way Berkeley, CA 94704",
-                dropoff_address: "2227 Piedmont Ave Berkeley, CA 94720 "
+                dropoff_address: "2227 Piedmont Ave Berkeley, CA 94720"
             };
-            postmates.quote(delivery, function(err, resp) {
-                res.render('placeOrder');
-                console.log(resp.body.fee);
+            //console.log(delivery);
+            postmates.quote(delivery, function(err, res) {
+                console.log(res.body.fee);
             });
+            res.render('placeOrder', {QuoteID: res.body.id});
         });
         }
     });
@@ -84,7 +85,7 @@ exports.getBorrowProduct = function(req, res) {
 
 
 /** POST / BORROW PRODUCT**/
-exports.postBorrowProduct = function(req, res) {
+/*exports.postBorrowProduct = function(req, res) {
     var user = req.user;
     var errors = req.validationErrors();
     if (errors) {
@@ -102,6 +103,44 @@ exports.postBorrowProduct = function(req, res) {
             res.redirect('/products');
         });
     });
+
+};*/
+
+exports.postConfirmOrder= function(req,res){
+	var user = req.user;
+    var errors = req.validationErrors();
+    if (errors) {
+        req.flash('errors', errors);
+        return res.redirect('/borrowproduct');
+        }
+    
+	var delivery = {
+		manifest: req.body.manifest,
+		pickup_name: req.body.pickup_name,
+		pickup_address: req.body.pickup_address,
+		pickup_phone_number: req.body.pickup_phone_number,
+		pickup_business_name: req.body.pickup_business_name,
+		pickup_notes: req.body.pickup_notes,
+		dropoff_name: req.body.dropoff_name,
+		dropoff_address: req.body.dropoff_address,
+		dropoff_phone_number: req.body.dropoff_phone_number,
+		dropoff_business_name: req.body.dropoff_business_name,
+		dropoff_notes: req.body.dropoff_notes,
+		quote_id: req.body.quote_id
+		};
+	postmates.new(delivery, function(err, res) {
+			console.log(res.body);
+		console.log("inside post");
+	});
+	console.log("hello");
+	console.log(req.body.quote_id);
+
+	postmates.get(req.body.quote_id, function(err, res){
+		console.log(res.body);
+	});
+
+};
+exports.getConfirmOrder = function(){
 
 };
 

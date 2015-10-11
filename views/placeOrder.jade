@@ -12,6 +12,11 @@ block content
       .col-sm-7
         input.form-control(type='text', name='manifest', id='manifest')
 
+     .form-group
+      label.col-sm-3.control-label(for='pickup_name') Pickup Name
+      .col-sm-7
+        input.form-control(type='pickup_name', name='pickup_name', id='pickup_name')
+
       .form-group
       label.col-sm-3.control-label(for='pickup_address') Pick Up Address
       .col-sm-7
@@ -52,7 +57,13 @@ block content
       .col-sm-7
         input.form-control(type='dropoff_notes', name='dropoff_notes', id='dropoff_notes')
 
+      .form-group
+      label.col-sm-3.control-label(for='quote_id').hidden Quote ID
+      .col-sm-7
+        input.form-control(type='quote_id', name='quote_id', id='quote_id').hidden= quoteID
+
         br
+        .col-sm-3
         button.btn.btn-success(type='submit')
           i.fa.fa-user-plus
           | AddProduct
