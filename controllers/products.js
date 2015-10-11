@@ -1,6 +1,10 @@
 
 var ProductSchema = require('../models/Product');
+var User = require('../models/User');
 var product = require('../product');
+var Postmates = require('postmates');
+var postmates = new Postmates('cus_KWaTpUK-km_Dq-', '21d5ae72-c418-40a2-987c-b3d2c822cedb');
+
 id_count = 0; //FIX TO MAKE UNIQUE
 exports.listProducts = function(req,res){
 
@@ -50,6 +54,32 @@ exports.postAddProduct = function(req,res){
       if (err) return next(err);
       res.redirect('/products');
       });
+};
+
+exports.getBorrowProduct = function(req, res) {
+
+
+    var number = req.param('number');
+    ProductSchema.find(function(err, products){
+        if(err) return console.error(err);
+        if(typeof products[number]==='undefined'){
+        res.status(404).json({status:'error'});
+        }
+        else{
+            User.findOne({ _id: products[number].lender}, function(err, u){
+            if (err) return err;
+            console.log("Pickup Address: " + u.profile.location);
+            console.log("Delivery Address: " + req.user.profile.location);
+            var delivery = {
+                pickup_address: "2400 Bancroft Way Berkeley, CA 94704",
+                dropoff_address: "2227 Piedmont Ave Berkeley, CA 94720 "
+            };
+            postmates.quote(delivery, function(err, resp) {
+                res.render('placeOrder');
+            });
+        });
+        }
+    });
 };
 
 /** POST / BORROW PRODUCT**/

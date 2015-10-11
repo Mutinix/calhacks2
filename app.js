@@ -207,6 +207,7 @@ app.get('/addProduct', productController.getAddProduct);
 app.post('/addProduct', productController.postAddProduct);
 app.post('/borrowProduct', productController.borrowProduct);
 app.get('/products/:number', productController.individualProduct);
+app.get('/products/:number/placeOrder', productController.getBorrowProduct);
 
 /**
  * Error Handler.
