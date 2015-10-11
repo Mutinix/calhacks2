@@ -58,7 +58,6 @@ exports.postAddProduct = function(req,res){
 
 exports.getBorrowProduct = function(req, res) {
 
-
     var number = req.param('number');
     ProductSchema.find(function(err, products){
         if(err) return console.error(err);
@@ -76,24 +75,26 @@ exports.getBorrowProduct = function(req, res) {
             };
             postmates.quote(delivery, function(err, resp) {
                 res.render('placeOrder');
+                console.log(resp.body.fee);
             });
         });
         }
     });
 };
 
+
 /** POST / BORROW PRODUCT**/
-exports.borrowProduct = function(req, res) {
+exports.postBorrowProduct = function(req, res) {
     var user = req.user;
     var errors = req.validationErrors();
     if (errors) {
         req.flash('errors', errors);
         return res.redirect('/borrowproduct');
-		}
-	
-	ProductSchema.findOne({ _id: req.body.pid }, function(err, prod){
-		prod.isBorrowed = true;
-		console.log(prod.isBorrowed);
+        }
+    
+    ProductSchema.findOne({ _id: req.body.pid }, function(err, prod){
+        prod.isBorrowed = true;
+        console.log(prod.isBorrowed);
         prod.borrower = user._id.toString();
         prod.save(function(err) {
             if (err) return next(err);
@@ -103,3 +104,4 @@ exports.borrowProduct = function(req, res) {
     });
 
 };
+
