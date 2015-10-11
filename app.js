@@ -205,6 +205,7 @@ app.get('/auth/venmo/callback', passport.authorize('venmo', { failureRedirect: '
 app.get('/products', productController.listProducts);
 app.get('/addProduct', productController.getAddProduct);
 app.post('/addProduct', productController.postAddProduct);
+app.post('/borrowProduct', productController.borrowProduct);
 
 
 /**

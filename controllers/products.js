@@ -39,3 +39,26 @@ exports.postAddProduct = function(req,res){
       res.redirect('/');
       });
 };
+
+/** POST / BORROW PRODUCT**/
+exports.borrowProduct = function(req, res) {
+    var user = req.user;
+    console.log("REQ")
+    console.log(req);
+    var errors = req.validationErrors();
+    if (errors) {
+        req.flash('errors', errors);
+        return res.redirect('/borrowproduct');
+    }
+
+
+    ProductSchema
+    .findOne({ productid_id: req.body.pid }, function(err, prod){
+        prod.borrower = user._id.toString();
+        prod.save(function(err) {
+            if (err) return next(err);
+            req.flash('success', { msg: 'Product Borrowed!'});
+            res.redirect('/products');
+        });
+    });
+};
