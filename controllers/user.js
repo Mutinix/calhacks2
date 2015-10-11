@@ -4,6 +4,7 @@ var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 var passport = require('passport');
 var User = require('../models/User');
+var Product = require('../models/Product');
 var secrets = require('../config/secrets');
 
 /**
@@ -366,12 +367,19 @@ exports.getUser = function(req, res) {
   User
     .findOne({ username: req.params.username })
     .exec(function(err, user) {
+      // Check to see if a user with the specified username exists
       if (!user) {
         req.flash('errors', { msg: 'User with that username does not exist.' });
         return res.redirect('/');
       }
-      res.render('account/user', {
-        title: user.username + '\'s Profile'
-      });
+      // If the user does exist, find all products where the current user is the lender
+      Product
+        .find({ lender: user._id})
+        .exec(function(err, productList) {
+          res.render('account/user', {
+          title: user.username + '\'s Profile',
+          products: productList
+          });
+        });
     });
 };
