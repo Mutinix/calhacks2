@@ -5905,10 +5905,8 @@ a.badge:focus {
   padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 30px;
-  color: #d3d3d3;
+  color: inherit;
   background-color: #eeeeee;
-  background: url('https://img1.etsystatic.com/019/2/7385585/il_fullxfull.481695541_epxw.jpg') no-repeat center center;
-  height: 300px;
 }
 
 .jumbotron h1,
@@ -5928,7 +5926,7 @@ a.badge:focus {
 
 .container .jumbotron,
 .container-fluid .jumbotron {
-  border-radius: 0;
+  border-radius: 6px;
 }
 
 .jumbotron .container {
