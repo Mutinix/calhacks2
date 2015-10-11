@@ -7,4 +7,8 @@ Switcheroo allows you to rent any product imaginable. Our ever-growing catalog o
 
 =======================
 
+**Notes:** Sign-up and go to products to begin renting & lending!
+
+=======================
+
 **Developers**: [Aashna](https://github.com/aashna956) & [Gaurav](https://github.com/mutinix/)
