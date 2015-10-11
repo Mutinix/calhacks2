@@ -3,14 +3,16 @@ extends layout
 block content
 	.row
 		h3.col-sm-9 Products
-		a(href='/addproduct').col-sm-3
-			button.btn.btn.btn-primary(type='submit')
-				i.fa.fa-plus
-				| Add Product	
 
 	hr
 
-	.row 
+	.row
+		a(href='/addproduct').col-sm-3
+				button.btn.btn.btn-primary(type='submit')
+					i.fa.fa-plus
+					| Add Product
+
+	.row
 		ul.list-unstyled
 			each product, index in products
 				li 
@@ -19,3 +21,4 @@ block content
 							h4= product.name
 						a(href="/products/" + index).thumbnail
 							img(src=product.imgUrl)
+						h5= "$" + product.price + "/day"
