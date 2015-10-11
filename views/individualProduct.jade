@@ -6,13 +6,16 @@ block content
 	.row 
 		img(src=product.imgUrl).thumbnail.col-sm-3
 		.col-sm-8 
+			if product.isBorrowed
+				p This product is currently unavailable.
 			h1= "$"+product.price
 			p= product.description
+
 			form.form-horizontal(action='/borrowProduct', method='POST')
-							input(type='hidden', name='pid', value=product.productid_id)
+							input(type='hidden', name='pid', value=product._id)
 							input(type='hidden', name='_csrf', value=_csrf)
 							.form-group
-								button.btn.btn.btn-primary(type='submit')
+								button(disabled=(product.isBorrowed==1)).btn.btn.btn-primary(type='submit')
 									i.fa.fa-pencilr
 									| Borrow Product
 		

@@ -1,16 +1,16 @@
 extends layout
 
 block content
-	h1 Products
-	hr 
-	.row 
-		h2= title
-
-		a(href='/addproduct')
+	.row
+		h3.col-sm-9 Products
+		a(href='/addproduct').col-sm-3
 			button.btn.btn.btn-primary(type='submit')
 				i.fa.fa-plus
-				| Add Product
-		
+				| Add Product	
+
+	hr
+
+	.row 
 		ul.list-unstyled
 			each product, index in products
 				li 
