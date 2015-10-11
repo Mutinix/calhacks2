@@ -1,28 +1,27 @@
 extends layout
 
 block content
+
   .jumbotron
-    h1 <->
+    h1 Switcheroo
     p.lead A place to exchange everything.
-  hr
-  .row
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
+
+  .container
+
+    <!-- Background Tiles -->
+    h3 Hear what our customers have to say!
+
+    br 
+
+    .row
+        .col-xs-6.col-md-4
+            .tile.tile-caption-bg.tile-image-1
+                span I got the perfect hair-dryer just in time for my wedding!
+        .col-xs-6.col-md-4
+            .tile.tile-caption-bg.tile-image-2
+                span I got the perfect cat just in time for retirement!
+        .col-xs-6.col-md-4
+            .tile.tile-caption-bg.tile-image-3
+                span I got the perfect costume just in time for halloween!
+
+    hr

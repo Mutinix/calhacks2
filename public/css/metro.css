@@ -1,0 +1,72 @@
+/* Accent Colors */
+/* Tile Images */
+.tile {
+  display: block;
+  padding: 10px;
+  background: #DDD;
+  height: 200px;
+  position: relative;
+  color: #000;
+  background-size: cover;
+  /* Caption Backgrounds */
+  /* Background Colors */
+  /* Background Images */
+}
+
+.tile span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  width: 100%;
+}
+
+.tile:hover,
+.tile:active,
+.tile:visited {
+  color: #000;
+}
+
+.tile.tile-caption-bg span {
+  background: linear-gradient(transparent 80%, #999);
+}
+
+.tile.tile-accent-1 {
+  background-color: #f25022;
+}
+
+.tile.tile-accent-2 {
+  background-color: #7db900;
+}
+
+.tile.tile-accent-3 {
+  background-color: #01a4ee;
+}
+
+.tile.tile-accent-4 {
+  background-color: #ffb802;
+}
+
+.tile.tile-accent-5 {
+  background-color: #737373;
+}
+
+.tile.tile-image-1 {
+  background-image: url("http://lorempixel.com/400/400/cats/1");
+}
+
+.tile.tile-image-2 {
+  background-image: url("http://lorempixel.com/400/400/cats/2");
+}
+
+.tile.tile-image-3 {
+  background-image: url("http://lorempixel.com/400/400/cats/3");
+}
+
+.tile.tile-image-4 {
+  background-image: url("http://lorempixel.com/400/400/cats/4");
+}
+
+.tile.tile-image-5 {
+  background-image: url("http://lorempixel.com/400/400/cats/5");
+}

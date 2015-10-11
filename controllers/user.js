@@ -363,7 +363,6 @@ exports.postForgot = function(req, res, next) {
  * Profile page.
  */
 exports.getUser = function(req, res) {
-  console.log("HERE");
   User
     .findOne({ username: req.params.username })
     .exec(function(err, user) {

@@ -1,0 +1,60 @@
+$spacer: 10px;            // amount of padding for tile
+$text-color: #000;        // default text color
+$text-color-light: #FFF;  // default dark text color
+$caption-bg: linear-gradient(rgba(0,0,0,0) 80%, #999);
+
+/* Accent Colors */
+$accent1: #f25022;
+$accent2: #7db900;
+$accent3: #01a4ee;
+$accent4: #ffb802;
+$accent5: rgb(115,115,115);
+
+/* Tile Images */
+$image1: 'http://lorempixel.com/400/400/cats/1';
+$image2: 'http://lorempixel.com/400/400/cats/2';
+$image3: 'http://lorempixel.com/400/400/cats/3';
+$image4: 'http://lorempixel.com/400/400/cats/4';
+$image5: 'http://lorempixel.com/400/400/cats/5';
+  
+.tile {
+  display: block;
+  padding: $spacer;
+  background: #DDD;
+  height: 200px;
+  position: relative;
+  color: $text-color;
+  background-size: cover;
+
+  span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: $spacer;
+    width: 100%;
+  }
+  
+  &:hover,
+  &:active,
+  &:visited {
+    color: $text-color;
+  }
+  
+  /* Caption Backgrounds */
+  &.tile-caption-bg span {background: $caption-bg;}
+  
+  /* Background Colors */
+  &.tile-accent-1 {background-color: $accent1;}
+  &.tile-accent-2 {background-color: $accent2;}
+  &.tile-accent-3 {background-color: $accent3;}
+  &.tile-accent-4 {background-color: $accent4;}
+  &.tile-accent-5 {background-color: $accent5;}
+  
+  /* Background Images */
+  &.tile-image-1 {background-image: url($image1);}
+  &.tile-image-2 {background-image: url($image2);}
+  &.tile-image-3 {background-image: url($image3);}
+  &.tile-image-4 {background-image: url($image4);}
+  &.tile-image-5 {background-image: url($image5);}
+  
+}
