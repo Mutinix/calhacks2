@@ -20,7 +20,7 @@ block content
       .form-group
       label.col-sm-3.control-label(for='pickup_address') Pick Up Address
       .col-sm-7
-        input.form-control(type='text', name='pickup_address', id='pickup_address')
+        input.form-control(type='text', name='pickup_address', id='pickup_address', value=delivery.pickup_address, disabled)
       
       .form-group
       label.col-sm-3.control-label(for='pickup_phone_number') Phone Number
@@ -40,7 +40,7 @@ block content
       .form-group
       label.col-sm-3.control-label(for='dropoff_address') Dropoff Address
       .col-sm-7
-        input.form-control(type='dropoff_address', name='dropoff_address', id='dropoff_address')
+        input.form-control(type='dropoff_address', name='dropoff_address', id='dropoff_address', value=delivery.dropoff_address, disabled)
 
       .form-group
       label.col-sm-3.control-label(for='dropoff_phone_number') Dropoff Phone Number

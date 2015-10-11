@@ -73,11 +73,10 @@ exports.getBorrowProduct = function(req, res) {
                 pickup_address: "2400 Bancroft Way Berkeley, CA 94704",
                 dropoff_address: "2227 Piedmont Ave Berkeley, CA 94720"
             };
-            //console.log(delivery);
-            postmates.quote(delivery, function(err, res) {
-                console.log(res.body.fee);
+            postmates.quote(delivery, function(err, resp) {
+                res.render('placeOrder', {delivery: delivery});
+                console.log(resp.body.fee);
             });
-            res.render('placeOrder', {QuoteID: res.body.id});
         });
         }
     });
@@ -106,7 +105,7 @@ exports.getBorrowProduct = function(req, res) {
 
 };*/
 
-exports.postConfirmOrder= function(req,res){
+exports.postBorrowProduct= function(req,res){
 	var user = req.user;
     var errors = req.validationErrors();
     if (errors) {
