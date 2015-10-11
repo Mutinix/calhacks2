@@ -9,7 +9,8 @@ var productSchema = new mongoose.Schema({
     description: String,
     productid_id: Number,
     imgUrl: String,
-    price: Number
+    price: Number,
+    isBorrowed: Boolean
 });
 
 

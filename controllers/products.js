@@ -1,7 +1,6 @@
 
 var ProductSchema = require('../models/Product');
 var product = require('../product');
-
 id_count = 0; //FIX TO MAKE UNIQUE
 exports.listProducts = function(req,res){
 
@@ -17,12 +16,11 @@ exports.individualProduct = function(req, res){
 	var number = req.param('number');
 	ProductSchema.find(function(err, products){
 		if(err) return console.error(err);
-		req.session.lastNumber = number;
 		if(typeof products[number]==='undefined'){
 		res.status(404).json({status:'error'});
 		}
 		else{res.render('individualProduct', {product: products[number]});}
-	}); // FIX?
+	});
 };
 /** GET / ADD PRODUCT**/
 exports.getAddProduct = function(req,res){
@@ -31,7 +29,7 @@ exports.getAddProduct = function(req,res){
 };
 /** POST / ADD PRODUCT**/
 exports.postAddProduct = function(req,res){
-
+	req.assert('price', 'Must specify a price for product').notEmpty();
 	var errors = req.validationErrors();
 	if (errors) {
     req.flash('errors', errors);
@@ -44,30 +42,28 @@ exports.postAddProduct = function(req,res){
     description: req.body.description,
     productid_id: ++id_count,
     imgUrl: req.body.imgUrl,
-    price: req.body.price
+    price: req.body.price,
+    isBorrowed: false
 	};
 	var product1 = new ProductSchema(productData);
-	console.log(product1);
     product1.save(function(err) {
       if (err) return next(err);
-      res.redirect('/');
+      res.redirect('/products');
       });
 };
 
 /** POST / BORROW PRODUCT**/
 exports.borrowProduct = function(req, res) {
     var user = req.user;
-    console.log("REQ");
-    console.log(req);
     var errors = req.validationErrors();
     if (errors) {
         req.flash('errors', errors);
         return res.redirect('/borrowproduct');
-    }
-
-
-    ProductSchema
-    .findOne({ productid_id: req.body.pid }, function(err, prod){
+		}
+	
+	ProductSchema.findOne({ _id: req.body.pid }, function(err, prod){
+		prod.isBorrowed = true;
+		console.log(prod.isBorrowed);
         prod.borrower = user._id.toString();
         prod.save(function(err) {
             if (err) return next(err);
@@ -75,4 +71,5 @@ exports.borrowProduct = function(req, res) {
             res.redirect('/products');
         });
     });
+
 };
