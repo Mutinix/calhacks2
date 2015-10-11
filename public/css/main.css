@@ -10,6 +10,10 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
+.jumbotron{
+     background: url('https://img1.etsystatic.com/019/2/7385585/il_fullxfull.481695541_epxw.jpg') no-repeat center center;
+     height: 300px;
+}
 
 body {
   margin: 0;
@@ -5905,7 +5909,7 @@ a.badge:focus {
   padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 30px;
-  color: inherit;
+  color: #d3d3d3;
   background-color: #eeeeee;
 }
 
@@ -5926,7 +5930,7 @@ a.badge:focus {
 
 .container .jumbotron,
 .container-fluid .jumbotron {
-  border-radius: 6px;
+  border-radius: 0;
 }
 
 .jumbotron .container {
