@@ -50,7 +50,6 @@ exports.postAddProduct = function(req,res){
     borrower: null,
     lender: req.user._id,
     description: req.body.description,
-    productid_id: id_count++,
     imgUrl: req.body.imgUrl,
     price: req.body.price,
     isBorrowed: false

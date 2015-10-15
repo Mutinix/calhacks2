@@ -10,7 +10,7 @@ block content
 				p This product is currently unavailable.
 			h1= "$"+product.price
 			p= product.description
-			a(href='/products/'+product.productid_id+'/placeOrder').col-sm-3
+			a(href='/products/'+product._id+'/placeOrder').col-sm-3
 				button.btn.btn.btn-primary(type='submit')
 					i.fa.fa-plus
 					| Borrow Product
