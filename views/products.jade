@@ -19,8 +19,8 @@ block content
 			each product, index in products
 				li 
 					.col-sm-3
-						a(href="/products/" + index)
+						a(href="/products/" + product._id)
 							h4= product.name
-						a(href="/products/" + index).thumbnail
+						a(href="/products/" + product._id).thumbnail
 							img(src=product.imgUrl)
 						h5= "$" + product.price + "/day"
